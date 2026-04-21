@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  app:
+    image: node:20
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "5173:5173"
+      - "3001:3001"
+    command: bash -lc "npm run setup && npm run dev"

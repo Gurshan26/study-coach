@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=IBM+Plex+Mono:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-rgb: 247 250 245;
+  --surface-rgb: 255 255 255;
+  --surface-soft-rgb: 238 245 236;
+  --text-rgb: 36 52 40;
+  --text-muted-rgb: 85 106 91;
+  --primary-rgb: 124 201 165;
+  --secondary-rgb: 156 199 247;
+  --accent-rgb: 246 193 119;
+  --success-rgb: 79 174 114;
+  --danger-rgb: 226 125 118;
+  --border-rgb: 214 228 215;
+}
+
+[data-theme='dark'] {
+  --bg-rgb: 24 33 28;
+  --surface-rgb: 34 46 39;
+  --surface-soft-rgb: 44 58 49;
+  --text-rgb: 234 245 237;
+  --text-muted-rgb: 182 203 187;
+  --primary-rgb: 112 183 152;
+  --secondary-rgb: 124 167 211;
+  --accent-rgb: 214 167 101;
+  --success-rgb: 87 177 120;
+  --danger-rgb: 209 121 114;
+  --border-rgb: 74 92 80;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: rgb(var(--bg-rgb));
+  color: rgb(var(--text-rgb));
+  font-family: 'Nunito', sans-serif;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.45) 1px, transparent 1px),
+    radial-gradient(rgba(124, 201, 165, 0.07) 1px, transparent 1px);
+  background-position: 0 0, 20px 18px;
+  background-size: 20px 20px, 34px 34px;
+}
+
+button,
+a,
+input,
+textarea {
+  font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 201, 165, 0.42);
+}
+
+.card-shell {
+  border: 1px solid rgb(var(--border-rgb));
+  border-radius: 18px;
+  background: rgb(var(--surface-rgb));
+  box-shadow: 0 10px 28px rgba(81, 100, 85, 0.12);
+}
+
+.paper-grain {
+  position: relative;
+  overflow: hidden;
+}
+
+.paper-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 0.6px, transparent 0.6px);
+  background-size: 8px 8px;
+}
+
+.lift {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(69, 89, 73, 0.18);
+}
+
+.flip-card {
+  transform-style: preserve-3d;
+  transition: transform 240ms ease;
+}
+
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  backface-visibility: hidden;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

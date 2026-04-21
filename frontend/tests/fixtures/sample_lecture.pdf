@@ -1,0 +1,59 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 5 0 R /Resources << /Font << /F1 7 0 R >> >> >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 7 0 R >> >> >>
+endobj
+5 0 obj
+<< /Length 543 >>
+stream
+BT
+/F1 12 Tf
+72 0 0 72 72 0 cm
+1 0 0 1 0 10.5556 Tm (Introduction to Neural Networks) Tj
+1 0 0 1 0 10.2222 Tm (A perceptron computes a weighted sum of inputs and passes it through an activation function.) Tj
+1 0 0 1 0 9.8889 Tm (Activation functions such as sigmoid, tanh, and ReLU allow models to learn non-linear patterns.) Tj
+1 0 0 1 0 9.5556 Tm (Without non-linearity, stacked layers collapse into a single linear transformation.) Tj
+1 0 0 1 0 9.2222 Tm (Neural networks are trained by minimizing a loss function over many examples.) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Length 540 >>
+stream
+BT
+/F1 12 Tf
+72 0 0 72 72 0 cm
+1 0 0 1 0 10.5556 Tm (Backpropagation and Gradient Descent) Tj
+1 0 0 1 0 10.2222 Tm (Backpropagation applies the chain rule to compute gradients for each parameter in the network.) Tj
+1 0 0 1 0 9.8889 Tm (Gradient descent updates each weight by subtracting the learning rate times the gradient.) Tj
+1 0 0 1 0 9.5556 Tm (A small learning rate can converge slowly, while a large one may overshoot minima.) Tj
+1 0 0 1 0 9.2222 Tm (Mini-batch training balances noisy gradients and computational efficiency.) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000247 00000 n 
+0000000373 00000 n 
+0000000967 00000 n 
+0000001558 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+1628
+%%EOF

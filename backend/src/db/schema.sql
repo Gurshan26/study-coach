@@ -1,0 +1,56 @@
+CREATE TABLE IF NOT EXISTS documents (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  filename TEXT NOT NULL,
+  original_name TEXT NOT NULL,
+  content TEXT NOT NULL,
+  word_count INTEGER,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS topics (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  document_id INTEGER REFERENCES documents(id) ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  keywords TEXT,
+  paragraph_indices TEXT
+);
+
+CREATE TABLE IF NOT EXISTS quiz_questions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  document_id INTEGER REFERENCES documents(id) ON DELETE CASCADE,
+  topic_id INTEGER REFERENCES topics(id),
+  question TEXT NOT NULL,
+  correct_answer TEXT NOT NULL,
+  distractors TEXT NOT NULL,
+  difficulty TEXT DEFAULT 'medium',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS quiz_attempts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  question_id INTEGER REFERENCES quiz_questions(id) ON DELETE CASCADE,
+  chosen_answer TEXT,
+  is_correct INTEGER NOT NULL,
+  time_taken_ms INTEGER,
+  attempted_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS flashcards (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  document_id INTEGER REFERENCES documents(id) ON DELETE CASCADE,
+  topic_id INTEGER REFERENCES topics(id),
+  front TEXT NOT NULL,
+  back TEXT NOT NULL,
+  interval INTEGER DEFAULT 1,
+  repetitions INTEGER DEFAULT 0,
+  ease_factor REAL DEFAULT 2.5,
+  next_review DATETIME DEFAULT CURRENT_TIMESTAMP,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS flashcard_reviews (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  flashcard_id INTEGER REFERENCES flashcards(id) ON DELETE CASCADE,
+  quality INTEGER NOT NULL,
+  reviewed_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
