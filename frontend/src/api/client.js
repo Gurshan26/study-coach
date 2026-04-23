@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const defaultBaseURL = import.meta.env.PROD ? '/_/backend' : 'http://localhost:3001';
+
 const client = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3001'
+  baseURL: import.meta.env.VITE_API_URL || defaultBaseURL
 });
 
 function isOfflineError(error) {

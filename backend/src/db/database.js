@@ -10,9 +10,18 @@ let db;
 
 function resolveDbPath() {
   const configuredPath = process.env.DATABASE_PATH || './data/studycoach.db';
+  const isVercel = process.env.VERCEL === '1' || Boolean(process.env.VERCEL_ENV);
   if (configuredPath === ':memory:') {
     return ':memory:';
   }
+
+  if (isVercel) {
+    if (path.isAbsolute(configuredPath) && configuredPath.startsWith('/tmp/')) {
+      return configuredPath;
+    }
+    return path.resolve('/tmp', path.basename(configuredPath));
+  }
+
   return path.resolve(process.cwd(), configuredPath);
 }
 

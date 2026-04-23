@@ -14,4 +14,8 @@ initializeDatabase();
 const app = createApp();
 const port = Number(process.env.PORT || 3001);
 
-app.listen(port);
+if (process.env.VERCEL !== '1') {
+  app.listen(port);
+}
+
+export default app;
